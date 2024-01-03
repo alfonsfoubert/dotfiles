@@ -33,10 +33,27 @@ return {
 			})
 			lspconfig.html.setup({
 				capabilites = capabilities,
+                filetypes = { "html" },
 			})
+            lspconfig.htmx.setup({
+                capabilites = capabilities,
+                filetypes = { "html" },
+            })
 			lspconfig.lua_ls.setup({
 				capabilites = capabilities,
 			})
+            lspconfig.gopls.setup({
+                capabilities = capabilities,
+                filetypes = { "go", "gomod" },
+                settings = {
+                    gopls = {
+                        completeUnimported = true,
+                        analyses = {
+                            unusedparams = true,
+                        },
+                    },
+                },
+            })
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
