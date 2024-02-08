@@ -30,8 +30,6 @@ alias top="btop"
 # Muscle memory aliases for Neovim
 alias vi="nvim"
 alias vim="nvim"
-alias vim-dev="NVIM_APPNAME=nvim-dev nvim"
-alias vim-notes="NVIM_APPNAME=nvim-notes nvim"
 
 # Neovim config
 vv() {
