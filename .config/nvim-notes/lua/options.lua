@@ -1,5 +1,8 @@
 local opt = vim.opt -- for conciseness
 
+-- conceal level for editing markdown
+opt.conceallevel = 2
+
 -- shows absolute line number on cursor line (when relative number is on)
 opt.number = true
 -- show relative line numbers
@@ -68,9 +71,9 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd("TextYankPost", {
-    desc = "Highlight when yanking (copying) text",
-    group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-    callback = function()
-        vim.highlight.on_yank()
-    end,
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
