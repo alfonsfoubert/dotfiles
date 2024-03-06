@@ -1,0 +1,112 @@
+# Default Configuration
+add_newline = false
+
+# Color scheme
+palette = "catppuccin_mocha"
+
+# Minimal prompt
+format = """$directory$character"""
+right_format = """$all"""
+
+[character]
+success_symbol = '[❯](bold green)'
+error_symbol = '[❯](bold red)'
+vimcmd_symbol = '[❮](bold green)'
+
+[directory]
+read_only = " "
+# style = "bold italic blue"
+# truncate_to_repo = true # truncates directory to root folder if in github repo
+# repo_root_style = "bold italic yellow"
+# repo_root_format = '[$before_root_path]($before_repo_root_style)[]($repo_root_style) [$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) '
+
+[memory_usage]
+symbol = " "
+
+[cmd_duration]
+style = "bold yellow"
+
+[hostname]
+style = "bold mauve"
+
+[username]
+format = "[$user]($style) on "
+style_user = "bold sky"
+
+[battery]
+disabled = true
+
+[git_branch]
+symbol = " "
+style = "bold pink"
+ignore_branches = ["master"]
+
+[git_status]
+disabled = true
+style = "bold red" 
+
+[package]
+symbol = " "
+format = 'via [$symbol($version) ]($style)'
+style = "bold peach"
+
+[golang]
+symbol = " "
+format = 'via [$symbol]($style)'
+style = "bold blue"
+
+[lua]
+symbol = " "
+format = 'via [$symbol($version )]($style)'
+style = "bold blue"
+
+[rust]
+symbol = " "
+format = 'via [$symbol]($style)'
+style = "bold blue"
+
+[aws]
+disabled = true
+symbol = " "
+format = 'on [$symbol($profile )(\($region\) )]($style)'
+style = "bold yellow"
+
+[docker_context]
+disabled = false
+symbol = " "
+format = 'via [$symbol$context]($style)'
+style = "bold yellow"
+
+[custom.pomodoro]
+disabled = true
+command = "pomodoro status"
+when = true
+style = "green"
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
