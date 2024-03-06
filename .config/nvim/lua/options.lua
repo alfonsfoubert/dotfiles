@@ -1,5 +1,14 @@
 local opt = vim.opt -- for conciseness
 
+-- 4 spaces for tabs (prettier default)
+opt.tabstop = 4
+-- 4 spaces for indent width
+opt.shiftwidth = 4
+-- expand tab to spaces
+opt.expandtab = true
+-- copy indent from current line when starting new one
+opt.autoindent = true
+
 -- shows absolute line number on cursor line (when relative number is on)
 opt.number = true
 -- show relative line numbers
@@ -68,9 +77,9 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd("TextYankPost", {
-    desc = "Highlight when yanking (copying) text",
-    group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-    callback = function()
-        vim.highlight.on_yank()
-    end,
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
