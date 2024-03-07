@@ -1,6 +1,10 @@
 # Files
 data.location=~/.task
 
+# Color
+include solarized-dark-256.theme
+# include ~/.config/task/themes/catppuccin.theme
+
 #Collection
 report.in.columns           = id,description
 report.in.description       = Inbox
