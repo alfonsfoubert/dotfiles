@@ -46,5 +46,4 @@ vv() {
 export PATH=~/go/bin:$PATH
 
 # Taskwarrior aliases
-alias project='basename "$(pwd)"'
-
+source ~/.config/task/aliases

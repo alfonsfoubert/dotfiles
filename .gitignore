@@ -1,1 +1,4 @@
 .DS_Store
+
+# Undo file store
+.vim/undodir

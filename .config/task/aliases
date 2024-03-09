@@ -1,0 +1,21 @@
+# Inbox
+alias in='task add +in'
+
+# Review
+webpage_title (){
+    wget -qO- "$*" | hxnormalize -x | hxselect -s '\n' -c  'title' 2>/dev/null
+}
+
+read_and_review (){
+    link="$1"
+    title=$(webpage_title $link)
+    echo $title
+    descr="\"Read and review: $title\""
+    id=$(task add +rnr "$descr" | sed -n 's/Created task \(.*\)./\1/p')
+    task "$id" annotate "$link"
+}
+
+alias rnr=read_and_review
+
+# Project 
+alias project='basename "$(pwd)"'
