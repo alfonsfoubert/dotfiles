@@ -21,6 +21,13 @@ function waiting-count() {
   printf "${Color}($(task +waiting -COMPLETED -DELETED count) items are waiting)${Reset}\n"
 }
 
+# Print the number of items in the inbox
+function inbox-count() {
+  Color='\033[38;5;66m'
+  Reset='\033[0m'
+  printf "${Color}($(task +in -COMPLETED -DELETED count) items are in the inbox)${Reset}\n"
+}
+
 # Helper to get the readdle-spark link for the currently selected email
 # (On macOS, I use Spark as my email client)
 function get-spark() {
@@ -82,7 +89,7 @@ read_and_review (){
     link="$1"
     title=$(webpage_title $link)
     descr="\"Read and review: $title\""
-    task add +rnr +next uri:"$link" "$descr"
+    task add +rnr uri:"$link" "$descr"
 }
 
 alias rnr=read_and_review
@@ -241,6 +248,10 @@ function delegate() {
     task delegated
     waiting-count
   else
-    task 
+    filter=$1
+    person=$2
+    shift 2
+    task "$filter" ann -in -next delegated:"$person" $@
   fi
 }
+alias delegated=delegate

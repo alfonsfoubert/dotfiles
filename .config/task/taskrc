@@ -2,7 +2,7 @@
 data.location=~/.task
 
 # Color
-include solarized-dark-256.theme
+include dark-gray-256.theme
 
 # Inbox
 report.in.columns           = id,project,tags,description
@@ -10,11 +10,18 @@ report.in.description       = Inbox
 report.in.filter            = status:pending limit:page (+in)
 report.in.labels            = ID,Project,Tags,Description
 
+#Next
+report.next.description     = Most urgent tasks
+report.next.columns         = id,urgency,depends,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description
+report.next.filter          = +PENDING -sdm -waiting delegated:
+report.next.labels          = ID,Urgency,Depends,Project,Tag,Recur,Scheduled,Due,Until,Description
+report.next.sort            = project-,urgency-
+#
 # Someday/Maybe
 report.sdm.description     = Someday/Maybe
-report.sdm.columns         = id,urgency,depends,priority,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description
-report.sdm.filter          = status:pending +sdm
-report.sdm.labels          = ID,Urgency,Depends,Priority,Project,Tag,Recur,Scheduled,Due,Until,Description
+report.sdm.columns         = id,urgency,depends,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description
+report.sdm.filter          = +PENDING +sdm
+report.sdm.labels          = ID,Urgency,Depends,Project,Tag,Recur,Scheduled,Due,Until,Description
 
 # No Next action
 report.nna.description     = No Next Action
