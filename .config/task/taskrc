@@ -5,23 +5,43 @@ data.location=~/.task
 include solarized-dark-256.theme
 
 # Inbox
-report.in.columns           = id,description
+report.in.columns           = id,project,tags,description
 report.in.description       = Inbox
 report.in.filter            = status:pending limit:page (+in)
-report.in.labels            = ID,DescriptionCollection
+report.in.labels            = ID,Project,Tags,Description
 
-#Someday/Maybe
+# Someday/Maybe
 report.sdm.description     = Someday/Maybe
 report.sdm.columns         = id,urgency,depends,priority,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description
 report.sdm.filter          = status:pending +sdm
 report.sdm.labels          = ID,Urgency,Depends,Priority,Project,Tag,Recur,Scheduled,Due,Until,Description
 
-#No Next action
+# No Next action
 report.nna.description     = No Next Action
 report.nna.columns         = project
 report.nna.filter          = +PENDING +READY -next -waiting -sdm
 report.nna.labels          = Project
 
+# Waiting
+report.waitingfor.description = Waiting
+report.waitingfor.filter      = +waiting +PENDING
+report.waitingfor.labels      = ID,Urgency,Tag,Project,Description
+report.waitingfor.columns     = id,urgency,tags,project,description
+
+# Delegated
+uda.delegated.type=string
+uda.delegated.label=Delegated to
+report.ready.filter=+READY delegated:
+report.delegated.description=Tasks delegated to others
+report.delegated.columns=id,project,description,delegated
+report.delegated.sort=delegated+,project+,description+
+report.delegated.filter=delegated.not: +PENDING
+
+# URI Custom Attribute
+uda.uri.type=string
+uda.uri.label=URI
+
+# Weekly Review
 tasksh.autoclear=1
 uda.reviewed.type=date
 uda.reviewed.label=Reviewed
@@ -29,4 +49,6 @@ report._reviewed.description=Tasksh review report.  Adjust the filter to your ne
 report._reviewed.columns=uuid
 report._reviewed.sort=reviewed+,modified+
 report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )
+
+# News tickle
 news.version=2.6.0
