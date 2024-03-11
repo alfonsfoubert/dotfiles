@@ -47,3 +47,7 @@ export PATH=~/go/bin:$PATH
 
 # Taskwarrior aliases
 source ~/.config/task/aliases
+
+# iCalbuddy aliases
+source ~/.config/icalbuddy/aliases
+

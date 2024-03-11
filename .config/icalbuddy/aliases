@@ -1,0 +1,9 @@
+#!/bin/bash
+
+events_today() {
+    while true; do
+        clear
+        icalBuddy -f -npn -nc -iep "title,datetime" -ps "/ » /" -po "datetime,title" eventsToday
+        sleep 300
+    done
+}

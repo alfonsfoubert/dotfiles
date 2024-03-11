@@ -5,27 +5,44 @@ alias t=task
 
 task() {
     if [[ $1 == "open" ]]; then
-        # Call the custom task-open function with the second argument
-        task-open "$2"
+      # Call the custom task-open function with the second argument
+      task-open "$2"
+    elif [[ $1 == "note" ]] then
+      # Call the custom note-open function with the second argument
+      note-open "$2"
     else
-        # Call the original Taskwarrior command
-        command task "$@"
+      # Call the original Taskwarrior command
+      command task "$@"
     fi
 }
 
-# Print the number of items waiting on something 
-# (not the wait:-annotated items)
-function waiting-count() {
-  Color='\033[38;5;66m'
-  Reset='\033[0m'
-  printf "${Color}($(task +waiting -COMPLETED -DELETED count) items are waiting)${Reset}\n"
+function statistics() {
+  while true; do
+    # Clear the screen for each iteration to keep the display clean
+    clear
+
+    # Fetch and display Taskwarrior statistics
+    echo "INBOX\tPENDING\tWAITING\tDELEGATED"
+    echo "`task +in +PENDING -COMPLETED -DELETED count`\t`task +PENDING -BLOCKED -COMPLETED -DELETED -sdm -waiting delegated: count`\t`task +waiting -COMPLETED -DELETED count`\t`task +PENDING delegated.any: count`"
+
+    # Wait for a specified duration before repeating the loop
+    # For example, sleep for 60 seconds (1 minute)
+    sleep 60
+  done
 }
 
-# Print the number of items in the inbox
-function inbox-count() {
-  Color='\033[38;5;66m'
-  Reset='\033[0m'
-  printf "${Color}($(task +in -COMPLETED -DELETED count) items are in the inbox)${Reset}\n"
+function top3() {
+  while true; do
+    # Clear the screen for each iteration to keep the display clean
+    clear
+
+    # Fetch and display Taskwarrior tasks
+    task limit=3 sort=urgency
+
+    # Wait for a specified duration before repeating the loop
+    # For example, sleep for 60 seconds (1 minute)
+    sleep 60
+  done
 }
 
 # Helper to get the readdle-spark link for the currently selected email
@@ -60,7 +77,6 @@ END
 function task-in() {
   if [[ $# -eq 0 ]]; then
     task 'in'
-    waiting-count
   else
     task add +in $@
   fi
@@ -105,7 +121,6 @@ function waiting() {
     shift
     task "$filter" stop
     task "$filter" ann -in -next +waiting $@
-    waiting-count
   fi
 }
 
@@ -114,7 +129,6 @@ function waiting() {
 function next() {
   if [[ $# -eq 0 ]]; then
     task +next
-    waiting-count
   else
     filter="$1"
     shift
@@ -127,7 +141,6 @@ function next() {
 function today() {
   if [[ $# -eq 0 ]]; then
     task today
-    waiting-count
   else
     filter="$1"
     shift
@@ -140,7 +153,6 @@ function today() {
 function someday() {
   if [[ $# -eq 0 ]]; then
     task sdm
-    waiting-count
   else
     filter="$1"
     shift
@@ -230,6 +242,19 @@ function task-open() {
   open `task _get $1.uri`
 }
 
+# I use neovim as my note taking application
+# Thiw will open the proper folder with the notes
+function note-open() {
+  cd ~/Notes/
+  prj=`task _get $1.project`
+  word_count=$(echo "$prj" | tr -s ' ' '\n' | wc -l)
+  if [ "$word_count" -gt 1 ]; then
+    NVIM_APPNAME=nvim-notes nvim 1.Projects/"$prj"/
+  else
+    NVIM_APPNAME=nvim-notes nvim 2.Areas/"$prj"/
+  fi
+}
+
 # Task annotate
 function tan() {
   filter="$1"
@@ -237,16 +262,10 @@ function tan() {
   task $filter ann $@
 }
 
-# Perform a task query with a pager
-function ptask() { 
-  task rc._forcecolor=on 'limit:' $@ | less -R; 
-}
-alias pt=ptask
-
+# Task delegation
 function delegate() {
   if [[ $# -eq 0 ]]; then
     task delegated
-    waiting-count
   else
     filter=$1
     person=$2

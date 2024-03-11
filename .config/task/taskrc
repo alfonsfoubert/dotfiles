@@ -13,9 +13,9 @@ report.in.labels            = ID,Project,Tags,Description
 #Next
 report.next.description     = Most urgent tasks
 report.next.columns         = id,urgency,depends,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description
-report.next.filter          = +PENDING -sdm -waiting delegated:
+report.next.filter          = +PENDING -BLOCKED -in -sdm -waiting delegated:
 report.next.labels          = ID,Urgency,Depends,Project,Tag,Recur,Scheduled,Due,Until,Description
-report.next.sort            = project-,urgency-
+report.next.sort            = urgency-
 #
 # Someday/Maybe
 report.sdm.description     = Someday/Maybe
@@ -26,7 +26,7 @@ report.sdm.labels          = ID,Urgency,Depends,Project,Tag,Recur,Scheduled,Due,
 # No Next action
 report.nna.description     = No Next Action
 report.nna.columns         = project
-report.nna.filter          = +PENDING +READY -next -waiting -sdm
+report.nna.filter          = +PENDING +READY -next -waiting -sdm delegated:
 report.nna.labels          = Project
 
 # Waiting
