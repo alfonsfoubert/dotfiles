@@ -5,7 +5,6 @@ export HISTSIZE=1000000000
 setopt INC_APPEND_HISTORY
 setopt EXTENDED_HISTORY
 
-
 # Starship is a minimalistic themed prompt
 eval "$(starship init zsh)"
 
@@ -27,6 +26,7 @@ alias ff="fzf"
 alias top="btop"
 
 # Muscle memory aliases for Neovim
+export EDITOR='nvim'
 alias vi="nvim"
 alias vim="nvim"
 
@@ -51,3 +51,6 @@ source ~/.config/task/aliases
 # iCalbuddy aliases
 source ~/.config/icalbuddy/aliases
 
+# Plugins
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

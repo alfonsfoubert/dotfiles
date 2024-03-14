@@ -3,8 +3,8 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
-	lazy = true,
-	ft = "markdown",
+	lazy = false,
+	-- ft = "markdown",
 	keys = {
 		{ "<leader>on", "<cmd>ObsidianNew<cr>", desc = "New Obsidian note", mode = "n" },
 		{ "<leader>oo", "<cmd>ObsidianSearch<cr>", desc = "Search Obsidian notes", mode = "n" },
