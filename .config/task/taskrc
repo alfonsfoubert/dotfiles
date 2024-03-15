@@ -59,3 +59,10 @@ report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +P
 
 # News tickle
 news.version=2.6.0
+
+#WingTask sync server
+taskd.server=app.wingtask.com:53589
+taskd.key=~/.wingtask_certs/alfonsfoubert@gmail.com.key.pem
+taskd.ca=~/.wingtask_certs/letsencrypt_root_cert.pem
+taskd.certificate=~/.wingtask_certs/alfonsfoubert@gmail.com.cert.pem
+taskd.credentials=WingTask/alfonsfoubert@gmail.com/49ddaba6-f27e-452c-9ea1-8c6c4321bfb9
