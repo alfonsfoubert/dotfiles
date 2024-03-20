@@ -2,7 +2,8 @@
 data.location=~/.task
 
 # Color
-include dark-gray-256.theme
+# include dark-gray-256.theme
+include ~/.config/task/themes/dracula.theme
 
 # Inbox
 report.in.columns           = id,project,tags,description
@@ -66,3 +67,11 @@ taskd.key=~/.wingtask_certs/alfonsfoubert@gmail.com.key.pem
 taskd.ca=~/.wingtask_certs/letsencrypt_root_cert.pem
 taskd.certificate=~/.wingtask_certs/alfonsfoubert@gmail.com.cert.pem
 taskd.credentials=WingTask/alfonsfoubert@gmail.com/49ddaba6-f27e-452c-9ea1-8c6c4321bfb9
+
+# Contexts for Blocks
+context.buffer.read=+buf
+context.buffer.write=+buf
+context.strategic.read=+str
+context.strategic.write=+str
+context.errands.read=+err
+context.errands.write=+err

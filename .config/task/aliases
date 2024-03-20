@@ -245,14 +245,30 @@ function task-open() {
 # I use neovim as my note taking application
 # Thiw will open the proper folder with the notes
 function note-open() {
-  cd ~/Notes/
+  # Get the variables I'll need
+  notes_dir="$HOME/Notes/"
+  note_id=`task _get $1.uuid | awk -F "-" '{print $5}'`
   prj=`task _get $1.project`
   word_count=$(echo "$prj" | tr -s ' ' '\n' | wc -l)
-  if [ "$word_count" -gt 1 ]; then
-    NVIM_APPNAME=nvim-notes nvim 1.Projects/"$prj"/
+  if [ -z "$prj" ]; then
+    # No project specified
+    proj_dir="0.Inbox/"
+  elif [ "$word_count" -gt 1 ]; then
+    # Projects have more than one word
+    proj_dir="1.Projects/"
   else
-    NVIM_APPNAME=nvim-notes nvim 2.Areas/"$prj"/
+    # It's an area (Areas have only one word)
+    proj_dir="2.Areas/"
   fi
+  #
+  # Create directory if it doesn't exist
+  target_dir="$notes_dir$proj_dir$prj/"
+  if [ ! -d "$target_dir" ]; then
+    mkdir -p "$target_dir"
+  fi
+
+  # Open the editor
+  nvim "$target_dir$note_id.md"
 }
 
 # Task annotate

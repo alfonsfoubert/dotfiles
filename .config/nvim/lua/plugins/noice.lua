@@ -18,6 +18,9 @@ return {
 					opts = { skip = true },
 				},
 			},
+			vim.keymap.set("n", "<leader>nn", function()
+				require("noice").cmd("dismiss")
+			end),
 		})
 	end,
 	dependencies = {
