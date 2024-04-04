@@ -1,4 +1,7 @@
 local opt = vim.opt -- for conciseness
+--
+-- conceal level for editing markdown
+opt.conceallevel = 2
 
 -- 4 spaces for tabs (prettier default)
 opt.tabstop = 4

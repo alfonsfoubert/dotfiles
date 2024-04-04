@@ -36,8 +36,26 @@ function top3() {
     # Clear the screen for each iteration to keep the display clean
     clear
 
+    echo "Next"
+
     # Fetch and display Taskwarrior tasks
     task limit=3 sort=urgency
+
+    # Wait for a specified duration before repeating the loop
+    # For example, sleep for 60 seconds (1 minute)
+    sleep 60
+  done
+}
+
+function urgent() {
+  while true; do
+    # Clear the screen for each iteration to keep the display clean
+    clear
+
+    echo "Urgent"
+
+    # Fetch and display Taskwarrior tasks
+    today
 
     # Wait for a specified duration before repeating the loop
     # For example, sleep for 60 seconds (1 minute)
@@ -252,13 +270,13 @@ function note-open() {
   word_count=$(echo "$prj" | tr -s ' ' '\n' | wc -l)
   if [ -z "$prj" ]; then
     # No project specified
-    proj_dir="0.Inbox/"
+    proj_dir="00 - Inbox/"
   elif [ "$word_count" -gt 1 ]; then
     # Projects have more than one word
-    proj_dir="1.Projects/"
+    proj_dir="01 - Projects/"
   else
     # It's an area (Areas have only one word)
-    proj_dir="2.Areas/"
+    proj_dir="02 - Areas/"
   fi
   #
   # Create directory if it doesn't exist

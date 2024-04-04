@@ -5,7 +5,7 @@
 -- `gc[count]{motion}` - (Op-pending) Toggles the region using linewise comment
 -- `gb[count]{motion}` - (Op-pending) Toggles the region using blockwise comment
 return {
-    "numToStr/Comment.nvim",
-    lazy = false,
-    opts = {},
+	"numToStr/Comment.nvim",
+	lazy = false,
+	opts = {},
 }

@@ -3,6 +3,7 @@
 events_today() {
     while true; do
         clear
+        echo "Today"
         icalBuddy -f -npn -nc -iep "title,datetime" -ps "/ » /" -po "datetime,title" eventsToday
         sleep 300
     done
