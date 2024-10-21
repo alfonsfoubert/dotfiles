@@ -1,0 +1,11 @@
+account alfonsfoubert@gmail.com
+host smtp.gmail.com
+port 465
+from alfonsfoubert@gmail.com
+user alfonsfoubert@gmail.com
+passwordeval "pass alfonsfoubert@gmail.com"
+auth on
+tls on
+tls_trust_file	/etc/ssl/cert.pem
+logfile /Users/alfonsfoubert/.local/state/msmtp/msmtp.log
+tls_starttls off

@@ -1,0 +1,75 @@
+# Data
+data.location=~/.task
+
+# Theme
+include ~/.config/task/themes/bubblegum-256.theme
+
+# User Defined Attributes
+## Delegated To
+uda.delegated.type=string
+uda.delegated.label=Delegated to
+
+## URI Custom Attribute
+uda.uri.type=string
+uda.uri.label=URI
+
+## Reviewed Date
+uda.reviewed.type=date
+uda.reviewed.label=Reviewed
+
+# Reports
+## Inbox
+report.in.description      = Inbox
+report.in.columns          = id,project,tags,description
+report.in.labels           = ID,Project,Tags,Description
+report.in.filter           = status:pending limit:page (+in)
+
+## Next
+report.next.description    = Most urgent tasks
+report.next.columns        = id,urgency,depends,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description
+report.next.labels         = ID,Urgency,Depends,Project,Tags,Recur,Scheduled,          Due,          Until,          Description
+report.next.filter         = +PENDING -BLOCKED -in -sdm -agenda -waiting delegated:
+report.next.sort           = urgency-
+
+## Someday/Maybe
+report.sdm.description     = Someday/Maybe
+report.sdm.columns         = id,urgency,depends,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description
+report.sdm.labels          = ID,Urgency,Depends,Project,Tags,Recur,Scheduled,          Due,          Until,          Description
+report.sdm.filter          = +PENDING +sdm
+
+## No Next action
+report.nna.description     = No Next Action
+report.nna.columns         = project
+report.nna.filter          = +PENDING +READY -next -waiting -sdm delegated:
+report.nna.labels          = Project
+
+## Waiting
+report.waitingfor.description = Waiting
+report.waitingfor.columns     = id,urgency,tags,project,description
+report.waitingfor.labels      = ID,Urgency,Tags,Project,Description
+report.waitingfor.filter      = +waiting +PENDING
+
+## Ready 
+report.ready.filter=+READY delegated:
+
+## Delegated
+report.delegated.description=Tasks delegated to others
+report.delegated.columns=id,project,description,delegated
+report.delegated.sort=delegated+,project+,description+
+report.delegated.filter=delegated.not: +PENDING
+
+# Weekly Review
+tasksh.autoclear=1
+report._reviewed.description=Tasksh review report.  Adjust the filter to your needs.
+report._reviewed.columns=uuid
+report._reviewed.sort=reviewed+,modified+
+report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )
+
+# Contexts
+context.buffer.read=+buf
+context.buffer.write=+buf
+context.strategic.read=+str
+context.strategic.write=+str
+context.errands.read=+err
+context.errands.write=+err
+news.version=3.1.0
