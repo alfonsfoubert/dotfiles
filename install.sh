@@ -1,13 +1,12 @@
 #!/bin/bash
 export XDG_CONFIG_HOME="$HOME/.config"
 mkdir -p "$XDG_CONFIG_HOME"
-mkdir -p "$XDG_CONFIG_HOME/nixpkgs"
 
+ln -sf "$PWD/ohmyposh" "$XDG_CONFIG_HOME"
 ln -sf "$PWD/nvim" "$XDG_CONFIG_HOME"/nvim
 
-ln -sf "$PWD/.bash_profile" "$XDG_CONFIG_HOME"/.bash_profile
-ln -sf "$PWD/.bashrc" "$XDG_CONFIG_HOME"/.bashrc
-ln -sf "$PWD/.tmux" "$XDG_CONFIG_HOME"/.tmux
-ln -sf "$PWD/config.nix" "$XDG_CONFIG_HOME"/nixpkgs/config.nix
+ln -sf "$PWD/.bash_profile" "$HOME"/.bash_profile
+ln -sf "$PWD/.bashrc" "$HOME"/.bashrc
+ln -sf "$PWD/.tmux.conf" "$HOME"/.tmux.conf
 
-nix-env -iA nixpkgs.myPackages
+nix-env -iA nixpkgs.myPackages -f config.nix
