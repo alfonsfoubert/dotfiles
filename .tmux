@@ -3,7 +3,7 @@ set-option -sa terminal-overrides ",xterm*:Tc"
 
 # Reload
 unbind r
-bind r source-file ~/.config/tmux/tmux.conf
+bind r source-file ~/.config/.tmux
 
 # Enable Mouse
 set -g mouse on
