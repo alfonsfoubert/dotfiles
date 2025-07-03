@@ -1,4 +1,5 @@
-# Bash configuration equivalent to zsh setup
+# Bash configuration for bash environments
+export TERM=screen-256color
 
 # History configuration
 export HISTSIZE=5000
@@ -26,11 +27,8 @@ alias lla='eza -la'
 alias ls=eza
 alias lt='eza --tree'
 alias top=btop
-
-# Golang environment variables
-export GOROOT=/nix/store/*/go/share/go
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$HOME/.local/bin:$PATH
+alias vim='nvim'
+alias vi='nvim'
 
 # Shell integrations
 eval "$(fzf --bash)"
@@ -48,4 +46,3 @@ set -o vi
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
 bind "set menu-complete-display-prefix on"
-
