@@ -1,5 +1,10 @@
 # Bash configuration for bash environments
 export TERM=screen-256color
+export COLORTERM=truecolor
+
+# Locale
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
 
 # History configuration
 export HISTSIZE=5000
