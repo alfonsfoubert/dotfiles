@@ -15,4 +15,4 @@ ln -sf "$PWD/config.nix" "$XDG_CONFIG_HOME"/nixpkgs/config.nix
 nix-env -iA nixpkgs.myPackages
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-"$HOME/.tmux/plugins/tpm/bin/install_plugins"
+~/.tmux/plugins/tpm/bin/install_plugins
